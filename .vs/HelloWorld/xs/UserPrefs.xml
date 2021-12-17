@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{8C1E2CB6-4295-B6A0-DF4B-149387BBAA8F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mangeObject/script/Shape.cs">
+    <Files>
+      <File FileName="Assets/mangeObject/script/SpawnZone.cs" Line="46" Column="117" />
+      <File FileName="Assets/mangeObject/script/behavior/LifecycleShapeBehavior.cs" Line="37" Column="29" />
+      <File FileName="Assets/mangeObject/script/behavior/DyingShapeBehavior.cs" Line="58" Column="6" />
+      <File FileName="Assets/mangeObject/script/behavior/ShapeBehaviorTypeMethod.cs" Line="28" Column="72" />
+      <File FileName="Assets/mangeObject/script/behavior/SatelliteShapeBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets/mangeObject/script/Game.cs" Line="256" Column="43" />
+      <File FileName="Assets/mangeObject/script/Shape.cs" Line="249" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HelloWorld" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ffa83e81-27f6-4063-813e-9ade5bc2e578" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
