@@ -27,7 +27,7 @@ public class Game : PersisableObject
     List<Shape> shapes;
     List<ShapeInstance> killList, markAsDyingList;
 
-    const int saveVersion = 6;
+    const int saveVersion = 7;
 
     int dyingShapeCount;
 
@@ -81,6 +81,7 @@ public class Game : PersisableObject
         {
             shapes[i].GameUpdate();
         }
+        GameLevel.Current.GameUpdate();
         inGameUpdateLoop = false;
         if (killList.Count > 0)
         {
