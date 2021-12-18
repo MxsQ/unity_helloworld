@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{B2C39B34-E99F-B78A-AD5C-C24C4B8E02FA}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mangeObject/script/SpawnZone.cs">
+    <Files>
+      <File FileName="Assets/mangeObject/script/edi/RegisterLevelObjectMenuItem.cs" Line="13" Column="43" />
+      <File FileName="Assets/mangeObject/script/GameLevel.cs" Line="8" Column="1" />
+      <File FileName="Assets/mangeObject/script/GameLevel.Editor.cs" Line="6" Column="2" />
+      <File FileName="Assets/mangeObject/script/SpawnZone.cs" Line="146" Column="11" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="unity_helloworld" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="mangeObject" expanded="True">
+                <Node name="script" expanded="True">
+                  <Node name="behavior" expanded="True" />
+                  <Node name="edi" expanded="True" />
+                  <Node name="Editor" expanded="True" />
+                  <Node name="SpawnZone.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b8a4255b-7f53-45dd-9805-a4f4af874506" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
