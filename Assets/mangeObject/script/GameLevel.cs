@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameLevel : PersisableObject
+public partial class GameLevel : PersisableObject
 {
     [SerializeField] int populationLimit;
 
     public static GameLevel Current { get; private set; }
 
     [SerializeField] SpawnZone spawnZone;
-    [SerializeField] PersisableObject[] persisableObjects;
+    [UnityEngine.Serialization.FormerlySerializedAs("levelObjects")]
+    [SerializeField] GameLevelObject[] levelObjects;
 
     public int PopulationLimit
     {
@@ -19,21 +20,49 @@ public class GameLevel : PersisableObject
         }
     }
 
+    //public bool HasMissingLevelObjects
+    //{
+    //    get
+    //    {
+    //        if (levelObjects != null)
+    //        {
+    //            for (int i = 0; i < levelObjects.Length; i++)
+    //            {
+    //                if (levelObjects[i] == null)
+    //                {
+    //                    return true;
+    //                }
+    //            }
+    //        }
+
+    //        return false;
+    //    }
+    //}
+
+    public void GameUpdate()
+    {
+        for (int i = 0; i < levelObjects.Length; i++)
+        {
+            levelObjects[i].GameUpdate();
+        }
+    }
+
+
     private void OnEnable()
     {
         Current = this;
-        if (persisableObjects == null)
+        if (levelObjects == null)
         {
-            persisableObjects = new PersisableObject[0];
+            levelObjects = new GameLevelObject[0];
         }
     }
 
     public override void Save(GameDataWriter writer)
     {
-        writer.Write(persisableObjects.Length);
-        for (int i = 0; i < persisableObjects.Length; i++)
+        writer.Write(levelObjects.Length);
+        for (int i = 0; i < levelObjects.Length; i++)
         {
-            persisableObjects[i].Save(writer);
+            levelObjects[i].Save(writer);
         }
     }
 
@@ -42,7 +71,7 @@ public class GameLevel : PersisableObject
         int saveCount = reader.ReadInt();
         for (int i = 0; i < saveCount; i++)
         {
-            persisableObjects[i].Load(reader);
+            levelObjects[i].Load(reader);
         }
     }
 
@@ -50,4 +79,66 @@ public class GameLevel : PersisableObject
     {
         spawnZone.SpawnShape();
     }
+
+    //public void RemoveMissingLevelObjects()
+    //{
+    //    if (Application.isPlaying)
+    //    {
+    //        Debug.LogError("Do not invoke in play mode");
+    //        return;
+    //    }
+
+    //    int holes = 0;
+    //    for (int i = 0; i < levelObjects.Length - holes; i++)
+    //    {
+    //        if (levelObjects[i] == null)
+    //        {
+    //            holes++;
+    //            System.Array.Copy(levelObjects, i + 1, levelObjects, i, levelObjects.Length - i - holes);
+    //            i -= 1;
+    //        }
+    //    }
+
+    //    System.Array.Resize(ref levelObjects, levelObjects.Length - holes);
+    //}
+
+    //public void RegisterLevelObject(GameLevelObject o)
+    //{
+    //    if (Application.isPlaying)
+    //    {
+    //        Debug.LogError("Do not invoke in play mode");
+    //        return;
+    //    }
+
+    //    if (HasLevelObject(o))
+    //    {
+    //        return;
+    //    }
+
+    //    if (levelObjects == null)
+    //    {
+    //        levelObjects = new GameLevelObject[] { o };
+    //    }
+    //    else
+    //    {
+    //        System.Array.Resize(ref levelObjects, levelObjects.Length + 1);
+    //        levelObjects[levelObjects.Length - 1] = o;
+    //    }
+    //}
+
+    //public bool HasLevelObject(GameLevelObject o)
+    //{
+    //    if (levelObjects != null)
+    //    {
+    //        for (int i = 0; i < levelObjects.Length; i++)
+    //        {
+    //            if (levelObjects[i] == o)
+    //            {
+    //                return true;
+    //            }
+    //        }
+    //    }
+
+    //    return false;
+    //}
 }
