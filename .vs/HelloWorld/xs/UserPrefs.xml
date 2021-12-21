@@ -1,28 +1,38 @@
 ﻿<Properties StartupConfiguration="{8C1E2CB6-4295-B6A0-DF4B-149387BBAA8F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mangeObject/script/behavior/LifecycleShapeBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tower war/script/factory/EnemyFactory.cs">
     <Files>
-      <File FileName="Assets/mangeObject/script/SpawnZone.cs" Line="46" Column="117" />
-      <File FileName="Assets/mangeObject/script/behavior/LifecycleShapeBehavior.cs" Line="47" Column="26" />
-      <File FileName="Assets/mangeObject/script/behavior/DyingShapeBehavior.cs" Line="24" Column="29" />
-      <File FileName="Assets/mangeObject/script/behavior/ShapeBehaviorTypeMethod.cs" Line="28" Column="72" />
-      <File FileName="Assets/mangeObject/script/behavior/SatelliteShapeBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/mangeObject/script/Game.cs" Line="269" Column="32" />
-      <File FileName="Assets/mangeObject/script/Shape.cs" Line="122" Column="55" />
+      <File FileName="Assets/Tower war/script/factory/Enemy.cs" Line="10" Column="1" />
+      <File FileName="Assets/Tower war/script/factory/EnemyFactory.cs" Line="10" Column="103" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HelloWorld" expanded="True" selected="True" />
+          <Node name="HelloWorld" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="mangeObject" expanded="True">
+                <Node name="script" expanded="True">
+                  <Node name="Editor" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Tower war" expanded="True">
+                <Node name="script" expanded="True">
+                  <Node name="data" expanded="True" />
+                  <Node name="editor" expanded="True" />
+                  <Node name="factory" expanded="True">
+                    <Node name="EnemyFactory.cs" selected="True" />
+                  </Node>
+                  <Node name="ground" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ffa83e81-27f6-4063-813e-9ade5bc2e578" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b709b29f-afc2-43b0-b388-c17a0937f019" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
