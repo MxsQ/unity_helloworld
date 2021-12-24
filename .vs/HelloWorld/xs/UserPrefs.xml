@@ -1,27 +1,21 @@
 ﻿<Properties StartupConfiguration="{8C1E2CB6-4295-B6A0-DF4B-149387BBAA8F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tower war/script/factory/EnemyFactory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tower war/script/defend/Explosion.cs">
     <Files>
-      <File FileName="Assets/Tower war/script/factory/Enemy.cs" Line="10" Column="1" />
-      <File FileName="Assets/Tower war/script/factory/EnemyFactory.cs" Line="10" Column="103" />
+      <File FileName="Assets/Tower war/script/TowerGame.cs" Line="7" Column="21" />
+      <File FileName="Assets/Tower war/script/defend/Shell.cs" Line="36" Column="39" />
+      <File FileName="Assets/Tower war/script/defend/MortarTower.cs" Line="85" Column="40" />
+      <File FileName="Assets/Tower war/script/defend/Explosion.cs" Line="12" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HelloWorld" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="mangeObject" expanded="True">
-                <Node name="script" expanded="True">
-                  <Node name="Editor" expanded="True" />
-                </Node>
-              </Node>
               <Node name="Tower war" expanded="True">
                 <Node name="script" expanded="True">
-                  <Node name="data" expanded="True" />
-                  <Node name="editor" expanded="True" />
-                  <Node name="factory" expanded="True">
-                    <Node name="EnemyFactory.cs" selected="True" />
+                  <Node name="defend" expanded="True">
+                    <Node name="Explosion.cs" selected="True" />
                   </Node>
-                  <Node name="ground" expanded="True" />
                 </Node>
               </Node>
             </Node>

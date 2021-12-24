@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : GameBehavior
 {
     [SerializeField] Transform model = default;
 
@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public float Scale { get; private set; }
+
     GameTile tileFrom, tileTo;
     Vector3 positionFrom, positionTo;
     float progress, progressFactory;
@@ -26,12 +28,21 @@ public class Enemy : MonoBehaviour
     float directionAngleFrom, directionAngleTo;
     float pathOffset;
     float speed;
+    float Health { get; set; }
 
     public void Initilize(float scale, float speed, float pathOffset)
     {
+        Health = 100f * scale;
+        Scale = scale;
         model.localScale = new Vector3(scale, scale, scale);
         this.speed = speed;
         this.pathOffset = pathOffset;
+    }
+
+    public void ApplyDamage(float damage)
+    {
+        Debug.Assert(damage >= 0f, "Nagative damage applied.");
+        Health -= damage;
     }
 
     public void SpawnOn(GameTile tile)
@@ -64,8 +75,14 @@ public class Enemy : MonoBehaviour
         progressFactory = speed;
     }
 
-    public bool GameUpdate()
+    public override bool GameUpdate()
     {
+        if (Health <= 0f)
+        {
+            OriginFactory.Reclaim(this);
+            return false;
+        }
+
         progress += Time.deltaTime * progressFactory;
         while (progress >= 1f)
         {

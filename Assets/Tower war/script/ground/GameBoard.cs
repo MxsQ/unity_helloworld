@@ -67,6 +67,16 @@ public class GameBoard : MonoBehaviour
         }
     }
 
+    List<GameTileContent> updateingContent = new List<GameTileContent>();
+
+    public void GameUpate()
+    {
+        for (int i = 0; i < updateingContent.Count; i++)
+        {
+            updateingContent[i].GameUpdate();
+        }
+    }
+
     public void Initialize(Vector2Int size, GameTileContentFactory contentFactory)
     {
         this.size = size;
@@ -175,7 +185,7 @@ public class GameBoard : MonoBehaviour
 
     public GameTile GetTile(Ray ray)
     {
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, 1))
         {
             int x = (int)(hit.point.x + size.x * 0.5f);
             int y = (int)(hit.point.z + size.y * 0.5f);
@@ -242,6 +252,42 @@ public class GameBoard : MonoBehaviour
         {
             tile.Content = contentFactory.Get(GameTile.GameTileContentType.SpawnPoint);
             spawnPoints.Add(tile);
+        }
+    }
+
+    public void ToggleTower(GameTile tile, Tower.TYPE towerType)
+    {
+        if (tile.Content.Type == GameTile.GameTileContentType.Tower)
+        {
+            updateingContent.Remove(tile.Content);
+            if (((Tower)tile.Content).TowerType == towerType)
+            {
+                tile.Content = contentFactory.Get(GameTile.GameTileContentType.Empty);
+                FindPaths();
+            }
+            else
+            {
+                tile.Content = contentFactory.Get(towerType);
+                updateingContent.Add(tile.Content);
+            }
+        }
+        else if (tile.Content.Type == GameTile.GameTileContentType.Empty)
+        {
+            tile.Content = contentFactory.Get(towerType);
+            if (FindPaths())
+            {
+                updateingContent.Add(tile.Content);
+            }
+            else
+            {
+                tile.Content = contentFactory.Get(GameTile.GameTileContentType.Empty);
+                FindPaths();
+            }
+        }
+        else if (tile.Content.Type == GameTile.GameTileContentType.Wall)
+        {
+            tile.Content = contentFactory.Get(towerType);
+            updateingContent.Add(tile.Content);
         }
     }
 }
