@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3edf45d72f57649b38db406ce79478ac, type: 3}
-  m_Name: War Factory
+  m_Script: {fileID: 11500000, guid: b0a88cb12b7d6446180be2ea16f74765, type: 3}
+  m_Name: Game Scenario
   m_EditorClassIdentifier: 
-  explosionPrefabe: {fileID: 1463752091069899317, guid: 455d93c0663e04687a597be993b81581, type: 3}
-  shellPrefab: {fileID: 3797727109814614655, guid: 3a68b28f2e7574d60b9794d6dbbdb609, type: 3}
+  waves:
+  - {fileID: 11400000, guid: 4cedfc869145c431e8d09bb8e85ebda2, type: 2}
+  - {fileID: 11400000, guid: 4cedfc869145c431e8d09bb8e85ebda2, type: 2}
+  cycles: 3
+  cycleSpeedUp: 1

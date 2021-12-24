@@ -5,21 +5,33 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EnemyFactory : GameObjectFactory
 {
-    [SerializeField] Enemy prefab = default;
+    [SerializeField] EnemyConfig small = default, medium = default, large = default;
 
-    [SerializeField, TowerFloatRangeSlider(0.5f, 2f)] TowerFloatRange scale = new TowerFloatRange(1f);
-
-    [SerializeField, TowerFloatRangeSlider(0.2f, 5f)] TowerFloatRange speed = new TowerFloatRange(1f);
-
-    [SerializeField, TowerFloatRangeSlider(-0.4f, 0.4f)] TowerFloatRange pathOffset = new TowerFloatRange(0f);
-
-
-    public Enemy Get()
+    EnemyConfig GetConfig(Enemy.TYPE type)
     {
-        Enemy instance = CreateGameObjectInstance(prefab);
+        switch (type)
+        {
+            case Enemy.TYPE.Small: return small;
+            case Enemy.TYPE.Medium: return medium;
+            case Enemy.TYPE.Large: return large;
+        }
+
+        Debug.Assert(false, "Unsupport enemy type!");
+        return null;
+    }
+
+    public Enemy Get(Enemy.TYPE type = Enemy.TYPE.Medium)
+    {
+        EnemyConfig config = GetConfig(type);
+        Enemy instance = CreateGameObjectInstance(config.prefab);
         instance.OriginFactory = this;
-        instance.Initilize(scale.RandomValueInRange, speed.RandomValueInRange, pathOffset.RandomValueInRange);
+        instance.Initilize(
+            config.scale.RandomValueInRange,
+            config.speed.RandomValueInRange,
+            config.pathOffset.RandomValueInRange,
+            config.health.RandomValueInRange);
         return instance;
+
     }
 
     public void Reclaim(Enemy enemy)
@@ -27,4 +39,25 @@ public class EnemyFactory : GameObjectFactory
         Debug.Assert(enemy.OriginFactory == this, "Wrong factory reclaimed!");
         Destroy(enemy.gameObject);
     }
+
+
+    [System.Serializable]
+    class EnemyConfig
+    {
+        public Enemy prefab = default;
+
+        [TowerFloatRangeSlider(0.5f, 2f)] public TowerFloatRange scale = new TowerFloatRange(1f);
+
+        [TowerFloatRangeSlider(0.2f, 5f)] public TowerFloatRange speed = new TowerFloatRange(1f);
+
+        [TowerFloatRangeSlider(-0.4f, 0.4f)] public TowerFloatRange pathOffset = new TowerFloatRange(0f);
+
+        [TowerFloatRangeSlider(10f, 1000f)] public TowerFloatRange health = new TowerFloatRange(100f);
+
+        enum Type
+        {
+            Small, Medium, Large
+        }
+    }
+
 }

@@ -109,12 +109,13 @@ public class GameBoard : MonoBehaviour
                     tile.IsAlternative = !tile.IsAlternative;
                 }
 
-                tile.Content = contentFactory.Get(GameTile.GameTileContentType.Empty);
+                //tile.Content = contentFactory.Get(GameTile.GameTileContentType.Empty);
             }
         }
 
-        ToggleDestination(tiles[tiles.Length / 2]);
-        ToggleSpawnPoint(tiles[0]);
+        //ToggleDestination(tiles[tiles.Length / 2]);
+        //ToggleSpawnPoint(tiles[0]);
+        Clear();
     }
 
     bool FindPaths()
@@ -289,5 +290,17 @@ public class GameBoard : MonoBehaviour
             tile.Content = contentFactory.Get(towerType);
             updateingContent.Add(tile.Content);
         }
+    }
+
+    public void Clear()
+    {
+        foreach (GameTile tile in tiles)
+        {
+            tile.Content = contentFactory.Get(GameTile.GameTileContentType.Empty);
+        }
+        spawnPoints.Clear();
+        updateingContent.Clear();
+        ToggleDestination(tiles[tiles.Length / 2]);
+        ToggleSpawnPoint(tiles[0]);
     }
 }
