@@ -6,7 +6,11 @@ public class Enemy : GameBehavior
 {
     [SerializeField] Transform model = default;
 
+    [SerializeField] EnemyAnimationConfig animationConfig = default;
+
     EnemyFactory originFactory;
+
+    EnemyAnimator animator;
 
     public EnemyFactory OriginFactory
     {
@@ -30,6 +34,17 @@ public class Enemy : GameBehavior
     float speed;
     float Health { get; set; }
 
+    private void Awake()
+    {
+        animator = new EnemyAnimator();
+        animator.Configue(model.GetChild(0).gameObject.AddComponent<Animator>(), animationConfig);
+    }
+
+    private void OnDestroy()
+    {
+        animator.Destroy();
+    }
+
     public void Initilize(float scale, float speed, float pathOffset, float health)
     {
         Health = health;
@@ -37,6 +52,7 @@ public class Enemy : GameBehavior
         model.localScale = new Vector3(scale, scale, scale);
         this.speed = speed;
         this.pathOffset = pathOffset;
+        animator.PlayIntro();
     }
 
     public void ApplyDamage(float damage)
@@ -57,6 +73,7 @@ public class Enemy : GameBehavior
     void PrepareIntro()
     {
         positionFrom = tileFrom.transform.localPosition;
+        transform.localPosition = positionFrom;
         positionTo = tileFrom.ExitPoint;
         direction = tileFrom.PathDirection;
         directionChange = DirectionChange.None;
@@ -77,6 +94,15 @@ public class Enemy : GameBehavior
 
     public override bool GameUpdate()
     {
+        if (animator.CurrentClip == EnemyAnimator.Clip.Intro)
+        {
+            if (!animator.IsDone)
+            {
+                return true;
+            }
+            animator.PlayMove(speed / Scale);
+        }
+
         if (Health <= 0f)
         {
             //OriginFactory.Reclaim(this);
@@ -172,6 +198,7 @@ public class Enemy : GameBehavior
     public override void Recycle()
     {
         originFactory.Reclaim(this);
+        animator.Stop();
     }
 
     public enum TYPE

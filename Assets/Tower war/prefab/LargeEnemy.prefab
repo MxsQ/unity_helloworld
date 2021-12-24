@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7380086672049256233}
+  animationConfig: {fileID: 11400000, guid: f51f581d692ca4f21a4cedd263e1a919, type: 2}
 --- !u!1 &1956214930085150130
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +59,7 @@ GameObject:
   - component: {fileID: 98392870994997740}
   - component: {fileID: 8344100042634478172}
   - component: {fileID: 5675136074315510548}
+  - component: {fileID: 8890516226475730150}
   m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
@@ -153,6 +155,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed609527f3f2e416a80c399bad722584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8890516226475730150
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956214930085150130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29c45b3ae596c4a14b2d9d66270996d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6609700983972059522
 GameObject:
   m_ObjectHideFlags: 0
