@@ -1,34 +1,19 @@
 ﻿<Properties StartupConfiguration="{8C1E2CB6-4295-B6A0-DF4B-149387BBAA8F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tower war/script/anim/EnemyAnimator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tower war/script/factory/GameObjectFactory.cs">
     <Files>
-      <File FileName="Assets/Tower war/script/factory/Enemy.cs" Line="76" Column="47" />
-      <File FileName="Assets/Tower war/script/anim/EnemyAnimator.cs" Line="18" Column="1" />
+      <File FileName="Assets/Tower war/script/ground/GameBoard.cs" Line="136" Column="31" />
+      <File FileName="Assets/Tower war/script/TowerGame.cs" Line="155" Column="27" />
+      <File FileName="Assets/Tower war/script/ground/GameTile.cs" Line="84" Column="36" />
+      <File FileName="Assets/Tower war/script/factory/GameTileContent.cs" Line="21" Column="10" />
+      <File FileName="Assets/Tower war/script/defend/LaserTower.cs" Line="16" Column="39" />
+      <File FileName="Assets/Tower war/script/defend/MortarTower.cs" Line="79" Column="44" />
+      <File FileName="Assets/Tower war/script/factory/TargetPoint.cs" Line="23" Column="1" />
       <File FileName="Assets/Tower war/script/factory/GameObjectFactory.cs" Line="29" Column="1" />
-      <File FileName="Assets/Tower war/script/anim/EnemyAnimationConfig.cs" Line="13" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HelloWorld" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="mangeObject" expanded="True">
-                <Node name="script" expanded="True">
-                  <Node name="edi" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Tower war" expanded="True">
-                <Node name="script" expanded="True">
-                  <Node name="anim" expanded="True">
-                    <Node name="EnemyAnimator.cs" selected="True" />
-                  </Node>
-                  <Node name="data" expanded="True" />
-                  <Node name="defend" expanded="True" />
-                  <Node name="factory" expanded="True" />
-                  <Node name="ground" expanded="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="HelloWorld" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

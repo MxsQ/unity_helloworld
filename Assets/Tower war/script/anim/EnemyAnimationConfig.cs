@@ -11,10 +11,14 @@ public class EnemyAnimationConfig : ScriptableObject
 
     [SerializeField] AnimationClip outro = default;
 
+    [SerializeField] AnimationClip dying = default;
+
     public AnimationClip Move => move;
 
     public AnimationClip Intro => intro;
 
     public AnimationClip Outro => outro;
+
+    public AnimationClip Dying => dying;
 
 }

@@ -13,6 +13,12 @@ public class EnemyAnimator
 
     AnimationMixerPlayable mixer;
 
+    Clip previorsClip;
+
+    float transitionProgress;
+
+    const float transitionSpeed = 5f;
+
     public Clip CurrentClip { get; private set; }
 
     public bool IsDone => GetPlayable(CurrentClip).IsDone();
@@ -21,9 +27,10 @@ public class EnemyAnimator
     {
         graph = PlayableGraph.Create();
         graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);
-        mixer = AnimationMixerPlayable.Create(graph, 3);
+        mixer = AnimationMixerPlayable.Create(graph, 4);
 
         var clip = AnimationClipPlayable.Create(graph, config.Move);
+        clip.Pause();
         mixer.ConnectInput((int)Clip.Move, clip, 0);
 
         clip = AnimationClipPlayable.Create(graph, config.Intro);
@@ -31,10 +38,46 @@ public class EnemyAnimator
         mixer.ConnectInput((int)Clip.Intro, clip, 0);
 
         clip = AnimationClipPlayable.Create(graph, config.Outro);
+        clip.SetDuration(config.Outro.length);
+        clip.Pause();
         mixer.ConnectInput((int)Clip.Outro, clip, 0);
+
+        clip = AnimationClipPlayable.Create(graph, config.Dying);
+        clip.SetDuration(config.Dying.length);
+        clip.Pause();
+        mixer.ConnectInput((int)Clip.Dying, clip, 0);
 
         var output = AnimationPlayableOutput.Create(graph, "Enemy", animator);
         output.SetSourcePlayable(mixer);
+    }
+
+    public void GameUpdate()
+    {
+        if (transitionProgress >= 0f)
+        {
+            transitionProgress += Time.deltaTime * transitionSpeed;
+            if (transitionProgress >= 1f)
+            {
+                transitionProgress = -1f;
+                SetWeight(CurrentClip, 1f);
+                SetWeight(previorsClip, 0f);
+                GetPlayable(previorsClip).Pause();
+            }
+            else
+            {
+                SetWeight(CurrentClip, transitionProgress);
+                SetWeight(previorsClip, 1f - transitionProgress);
+            }
+        }
+
+    }
+
+    void BeginTransition(Clip nextClip)
+    {
+        previorsClip = CurrentClip;
+        CurrentClip = nextClip;
+        transitionProgress = 0f;
+        GetPlayable(nextClip).Play();
     }
 
     public void PlayIntro()
@@ -46,17 +89,18 @@ public class EnemyAnimator
 
     public void PlayMove(float speed)
     {
-        SetWeight(CurrentClip, 0f);
-        SetWeight(Clip.Move, 1f);
         GetPlayable(Clip.Move).SetSpeed(speed);
-        CurrentClip = Clip.Move;
+        BeginTransition(Clip.Move);
     }
 
     public void PlayOutro()
     {
-        SetWeight(CurrentClip, 0f);
-        SetWeight(Clip.Outro, 1f);
-        CurrentClip = Clip.Outro;
+        BeginTransition(Clip.Outro);
+    }
+
+    public void PlayDying()
+    {
+        BeginTransition(Clip.Dying);
     }
 
     void SetWeight(Clip clip, float weight)
@@ -79,5 +123,5 @@ public class EnemyAnimator
         graph.Destroy();
     }
 
-    public enum Clip { Move, Intro, Outro }
+    public enum Clip { Move, Intro, Outro, Dying }
 }

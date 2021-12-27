@@ -33,6 +33,18 @@ public class Enemy : GameBehavior
     float pathOffset;
     float speed;
     float Health { get; set; }
+    Collider targetPointCollider;
+
+    public bool IsValidTarget => animator.CurrentClip == EnemyAnimator.Clip.Move;
+
+    public Collider TargetPointCollider
+    {
+        set
+        {
+            Debug.Assert(targetPointCollider == null, "Redefined collider");
+            targetPointCollider = value;
+        }
+    }
 
     private void Awake()
     {
@@ -53,6 +65,7 @@ public class Enemy : GameBehavior
         this.speed = speed;
         this.pathOffset = pathOffset;
         animator.PlayIntro();
+        targetPointCollider.enabled = false;
     }
 
     public void ApplyDamage(float damage)
@@ -94,6 +107,7 @@ public class Enemy : GameBehavior
 
     public override bool GameUpdate()
     {
+        animator.GameUpdate();
         if (animator.CurrentClip == EnemyAnimator.Clip.Intro)
         {
             if (!animator.IsDone)
@@ -101,13 +115,23 @@ public class Enemy : GameBehavior
                 return true;
             }
             animator.PlayMove(speed / Scale);
+            targetPointCollider.enabled = true;
+        }
+        else if (animator.CurrentClip >= EnemyAnimator.Clip.Outro)
+        {
+            if (animator.IsDone)
+            {
+                Recycle();
+                return false;
+            }
+            return true;
         }
 
         if (Health <= 0f)
         {
-            //OriginFactory.Reclaim(this);
-            Recycle();
-            return false;
+            animator.PlayDying();
+            targetPointCollider.enabled = false;
+            return true;
         }
 
         progress += Time.deltaTime * progressFactory;
@@ -119,8 +143,9 @@ public class Enemy : GameBehavior
             if (tileTo == null)
             {
                 TowerGame.EnemyReachedDestination();
-                Recycle();
-                return false;
+                animator.PlayOutro();
+                targetPointCollider.enabled = false;
+                return true;
             }
 
             progress = (progress - 1f) / progressFactory;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d764def4014348099e9e8e2cda6598a, type: 3}
   m_Name: Enemy Animation Config
   m_EditorClassIdentifier: 
-  move: {fileID: 7400000, guid: 20d11f9c34b8e47189cc2d56eb8efee7, type: 2}
-  intro: {fileID: 7400000, guid: 09f2364ac196a4634b2828a1d10312bd, type: 2}
-  outro: {fileID: 7400000, guid: c03b0bcce61f446f38afff93b413344c, type: 2}
+  move: {fileID: 7400000, guid: 1eaacc4db282f4a00ae97895f9e12955, type: 2}
+  intro: {fileID: 7400000, guid: bebcb9e45e51c4907b95e323739002db, type: 2}
+  outro: {fileID: 7400000, guid: ab85e0ae3faf4490c9f4ca25a58abe02, type: 2}
+  dying: {fileID: 7400000, guid: aac7cd9b6a3464a8b81cb872e2989ec2, type: 2}

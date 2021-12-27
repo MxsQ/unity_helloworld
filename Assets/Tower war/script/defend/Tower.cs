@@ -22,48 +22,8 @@ public abstract class Tower : GameTileContent
         }
     }
 
-    //public override void GameUpdate()
-    //{
-    //    //Debug.Log("searching");
-    //    if (TrackTarget() || AcquireTarget())
-    //    {
-    //        Shoot();
-    //    }
-    //    else
-    //    {
-    //        laserBeam.localScale = Vector3.zero;
-    //    }
-    //}
-
-    //void Shoot()
-    //{
-    //    Vector3 point = target.Position;
-    //    turret.LookAt(point);
-    //    laserBeam.localRotation = turret.localRotation;
-
-    //    float d = Vector3.Distance(turret.position, point);
-    //    laserBeamScale.z = d;
-    //    laserBeam.localScale = laserBeamScale;
-    //    laserBeam.localPosition = turret.localPosition + 0.5f * d * laserBeam.forward;
-
-    //    target.Enemy.ApplyDamage(damagePerSecond * Time.deltaTime);
-    //}
-
     protected bool AcquireTarget(out TargetPoint target)
     {
-        //Vector3 a = transform.localPosition;
-        //Vector3 b = a;
-        //b.y += 3f;
-        //int hits = Physics.OverlapCapsuleNonAlloc(a, b, targetingRange, targetBuffer, enemyLayerMask);
-        //if (hits > 0)
-        //{
-        //    target = targetBuffer[Random.Range(0, hits)].GetComponent<TargetPoint>();
-        //    Debug.Assert(target != null, "Targeted non-enemy!", targetBuffer[0]);
-        //    //Debug.Log("yes");
-        //    return true;
-        //}
-        //Debug.Log("no!!");
-
         if (TargetPoint.FillBuffer(transform.localPosition, targetingRange))
         {
             target = TargetPoint.RandomBuffered;
@@ -76,7 +36,7 @@ public abstract class Tower : GameTileContent
 
     protected bool TrackTarget(ref TargetPoint target)
     {
-        if (target == null)
+        if (target == null || !target.Enemy.IsValidTarget)
         {
             return false;
         }

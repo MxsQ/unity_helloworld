@@ -27,6 +27,7 @@ public class TargetPoint : MonoBehaviour
         {
             enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
         }
+        Enemy.TargetPointCollider = GetComponent<Collider>();
     }
 
     public static bool FillBuffer(Vector3 position, float range)
