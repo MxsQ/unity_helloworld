@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{8C1E2CB6-4295-B6A0-DF4B-149387BBAA8F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ObMesh/script/CircleGizmo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ObMesh/script/CubeSphere.cs">
     <Files>
-      <File FileName="Assets/ObMesh/script/Grid.cs" Line="71" Column="6" />
-      <File FileName="Assets/ObMesh/shader/RoundedCubeGrid.shader" Line="34" Column="23" />
-      <File FileName="Assets/ObMesh/script/CubeSphere.cs" Line="226" Column="72" />
-      <File FileName="Assets/ObMesh/script/CircleGizmo.cs" Line="7" Column="23" />
+      <File FileName="Assets/ObMesh/script/MeshDeformer.cs" Line="48" Column="73" />
+      <File FileName="Assets/ObMesh/script/MeshDeformerInput.cs" Line="16" Column="10" />
+      <File FileName="Assets/ObMesh/script/CubeSphere.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
